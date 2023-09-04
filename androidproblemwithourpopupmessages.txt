@@ -1,0 +1,3 @@
+the best practice is to use the "Modal" in android since it will make it 
+be at the top of other everytime you open it.
+```

@@ -1,0 +1,63 @@
+{
+  "expo": {
+    "name": "Kihepe",
+    "slug": "Kiepe",
+    "version": "1.0.8",
+    "orientation": "portrait",
+    "icon": "./assets/icon3.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "buildNumber": "1.0.1",
+      "supportsTablet": true,
+      "bundleIdentifier": "com.mweuc654.Kiepe"
+    },
+    "android": {
+      "icon": "./assets/icon3.png",
+      "versionCode": 15,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icon2.png",
+        "backgroundColor": "#ffffff"
+      },
+      "permissions": [
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.FOREGROUND_SERVICE"
+      ],
+      "package": "com.mweuc654.Kiepe"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow Kihepe App to use your location."
+        }
+      ],
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/notification_icon.png",
+          "color": "#8D99AE",
+          "sounds": [
+            "./assets/sounds/one.mp3"
+          ]
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "dcb35de6-bc0d-4881-b9aa-c14683a40874"
+      }
+    }
+  }
+}

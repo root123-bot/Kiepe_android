@@ -1,0 +1,82 @@
+/* eslint-disable no-alert */
+/* eslint-disable no-shadow */
+import React, { useEffect } from "react";
+import { View, Text, StyleSheet, Platform } from "react-native";
+import { Button } from "react-native-paper";
+import * as Notifications from "expo-notifications";
+
+Notifications.setNotificationHandler({
+  handleNotification: async () => {
+    return {
+      shouldShowAlert: true,
+      shouldPlaySound: true,
+      shouldSetBadge: false,
+    };
+  },
+});
+
+function MapScreen() {
+  useEffect(() => {
+    // for ios we need to ask for permission to display notification
+    // by default in android notification is "granted" so it will not
+    // ask for permission
+    (async () => {
+      const { status } = await Notifications.getPermissionsAsync();
+      if (status !== "granted") {
+        const { status } = await Notifications.requestPermissionsAsync();
+        if (status !== "granted") {
+          alert("Failed to get push token for push notification!");
+          return;
+        }
+      }
+    })();
+  });
+
+  useEffect(() => {
+    const subscription1 = Notifications.addNotificationReceivedListener(
+      (notification) => {
+      }
+    );
+
+    // means the user responded to notification by clicking/tapping on it
+    const subscription2 = Notifications.addNotificationResponseReceivedListener(
+      (response) => {
+      }
+    );
+
+    return () => {
+      // we need to remove listener when component is unmounted
+      subscription1.remove();
+      subscription2.remove();
+    };
+  }, []);
+
+  function scheduleNotificationHandler() {
+    Notifications.scheduleNotificationAsync({
+      content: {
+        title: "You've got mail! 📬",
+        body: "Here is the notification body",
+        data: { data: "goes here" },
+      },
+      trigger: { seconds: 5 },
+    });
+  }
+
+  return (
+    <View style={styles.container}>
+      <Button onPress={scheduleNotificationHandler}>
+        Schedule notification
+      </Button>
+    </View>
+  );
+}
+
+export default MapScreen;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+});

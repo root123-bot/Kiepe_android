@@ -1,0 +1,15 @@
+the big reason why we don't receive the notifications in device is that while device trying to fetch the token from expo server
+it failed everytime i receive "expo-notifications - Error encountered while updating the device push token with the server" na hii 
+ndo inasababisha mtu asipate notification can you imagine that tangu nianze kutumia "Bare" workflow hamna "pushtoken" ambayo imekuwa 
+saved kwenye server the problem is found in "EXPO SERVER" coz im having the strong intenet yaani hapa pasko tungekuwa tuna-ziona token 
+zinakuwa saved then hatupati push notification tungesema shida ipo kwenye code zetu au mambo ya "java" but hamna token ambayo inaenda 
+kule unategemea nini mkali? nimejaribu kutafuta articles ambazo watu wameface hii changamoto na hizi ndo link za kujaribu ku-solve hii
+issue..
+>>> https://stackoverflow.com/questions/67518680/expo-notifications-error-encountered-while-updating-the-device-push-token-with#:~:text=1%20Answer&text=So%20we%20figured%20it%20out,token%20is%20being%20retrieved%20successfully.
+
+
+// THIS IS ERROR WHICH MAKE ME NOT RECEIVING PUSHTOKEN FROM EXPO ... LOOK 
+Error: Encountered an exception while calling native method: Exception occurred while executing exported method getDevicePushTokenAsync on 
+module ExpoPushTokenManager: Default FirebaseApp is not initialized in this process com.mweuc654.Kiepe. Make sure to call FirebaseApp.initializeApp(Context) first.
+
+// this link explained well on how to link notification in android kuna mambo hadi ya firebase sio poa http://docs.expo.dev/push-notifications/push-notifications-setup/

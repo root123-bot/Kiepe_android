@@ -1,0 +1,59 @@
+THESE ARE WHEN I USE LINUX
+
+
+https://github.com/facebook/react-native/issues/35900
+
+// sdk version is not found in gradle.. https://stackoverflow.com/questions/75945881/why-i-am-getting-compilesdkversion-is-not-specified-error
+
+
+// for this error on build React-Native Android Windows error: Could not find com.facebook.react:react-native-gradle-plugin:
+// https://stackoverflow.com/questions/68402322/react-native-android-windows-error-could-not-find-com-facebook-reactreact-nat
+
+
+1. After you reinstall node_modules with updated package.json to support latest (0.71) react native, you need to edit your settings.gradle file by adding this line:
+
+        includeBuild('../node_modules/react-native-gradle-plugin')
+
+    Then go to Android folder. And clean the Android folder using "./gradlew clean" command and run build, maybe this will help fix your issue.
+
+    BUT YOU WILL NOTICE THERE IS SOME ERRORS EXPECILLY IN :app ABOUT ISSUES OF INSTALLING 'NDK' WHAT IS 'ndk' and where they look for this u will see
+    error in installing "ndk 23.1.7779620" you will ask you're self is where that version to use specified? ok the answer is in 
+    "build.gradle" file in android folder of your project. you will see this line of code
+
+        // We use NDK 23 which has both M1 support and is the side-by-side NDK version from AGP.
+        ndkVersion = "23.1.7779620"
+
+    Ko they need us to use "ndk" version of "23.1.7779620" but we don't have that version in our system so we need to download it through the android studio, just go to
+    android studio and go to "SDK Manager" and go to "SDK Tools" and check "NDK (Side by side)" expand it or check view more details to see the versions of ndk available
+    just go and check the version "23.1.7779620" and install it. after installing it.
+
+    // sometimes if u did that and not working try to go to this official link of android studio and look for how to 
+    install "ndk" https://developer.android.com/studio/projects/install-ndk#groovy
+
+
+2. Sometimes we get sdkVersion is not specified error when you trying to check for solutio nand debug the code through 
+different articles you see you have everything set properly U KNOW WHAT SOMETIMES CAUSE THIS ERROR IS THE FIRST ERROR 
+ABOVE WE FIXED SO THIS IS HOW I FOUND OUT AFTER FIXING ABOVE ERROR NO "sdkVersion" not specified error..
+
+
+
+
+
+// We use NDK 23 which has both M1 support and is the side-by-side NDK version from AGP.
+        ndkVersion = "23.1.7779620"
+
+
+
+// i have another error in building project..
+Could not determine the dependencies of task ':react-native-community_clipboard:compileDebugAidl'.
+> Failed to install the following SDK components:
+      build-tools;33.0.0 Android SDK Build-Tools 33
+  Install the missing components using the SDK manager in Android Studio.
+
+
+THIS MOST OF ERROR CAN BE RESOLVED BY INSTALLING DEDICATED PACKAGE AND VERSION IN ANDROID STUDIO.. 
+I think for above error u needed to install "build-tools;33.0.0" in android studio..
+
+
+
+// ANOTHER ERROR I RECEIVE IN BUILD IS > Task :app:compileDebugJavaWithJavac FAILED, then how to fix this

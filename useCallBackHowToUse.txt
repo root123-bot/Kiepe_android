@@ -1,0 +1,27 @@
+
+/* hizi props zikichange also this component re-render so here in case of our function ni lazima in Dashboard.js
+ tuzi-wrap in useCallback, mwanzo nilikuwa najua inabidi tutumie useCallback if that function is used as dependency
+ in the useEffect but ile useEffect() imewekwa ili kutuonesha ni jinsi gani hizi component zinakuwa-re-rendered if the
+ function in parent re-created but in actual sense is that if any props change the nested component re-created that all
+ so you should know that so it worth to say in most case in our project whenever we pass the function to the nested 
+ we should wrap that function callback..
+ https://youtu.be/_AyFP5s69N4
+
+ */
+
+  /* if passed props from parent cause children component to be refreshed when its the function re-created? the answer is yes
+  A React component re-renders when its state or props change. If your React component depends on other data outside of the 
+  component, you may need to force a re-render.
+  Kumbe sio lazima iwe ni dependency kwenye useEffect ya nested/child component but if its passed as props
+  it cause also the nested component to re-render
+  SO HERE WHEN THESE PROPS CHANGE THE HERE THE CHILD/NESTED COMPONENT RE-RENDER, NO NEED TO RE-RENDER 
+  https://sentry.io/answers/can-you-force-a-react-component-to-re-render-without-calling-setstate/
+*/
+
+SCENARIO ZA KUTUMIA useCallback
+1. if the function is passed the nested component as the prop, you should usecallback here because as long our function re-creacted
+cause nested component to re-render..
+2. if you have the function which do complex/expensive computation you should useCallback even if the function is not passed down to the
+nested component cause the function will be executed everytime the component re-render, AS WHEN THE FUNCTION RE-CREATED IT MEANS IT GET
+CALLED/EXECUTED SO IF IT HAVE COMPLEX LOGIC IT CAUSE PERFORMANCE PROPBLEM, but this case is RARE, WE SHOULD ONLY CARE
+FOCUS ON 1ST SCENARIO. https://www.youtube.com/watch?v=_AyFP5s69N4&t=2s

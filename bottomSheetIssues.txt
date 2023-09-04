@@ -1,0 +1,11 @@
+{/* in order to have the ability to drag up down the bottom sheet it we must wrap full component using the 
+      GestureHandlerRootView you can do that here or if you want all component to mutate the same prop you can
+      wrap full App.js root component with GestureHandlerRootView so as to have the gesture in all component for
+      me let me do it here, the documentation of the "BottomSheet" forgot to tell us about this issue
+      for now thank you github issues solved this
+      I don't know why the BottomSheet at Map.js worked without wrapping with this <GestureHandlerRootView> 
+      but i think it because of Map has drag and other gestures enabled... BUT I THINK ITS BETTER APPROACH TO WRAP
+      THIS <GestureHandlerRootView /> in our App.js to avoid wrapping everytime to the component we want to have the 
+      gesture events... so i'm going to wrap in App.js
+      https://github.com/gorhom/react-native-bottom-sheet/issues/800
+  */}

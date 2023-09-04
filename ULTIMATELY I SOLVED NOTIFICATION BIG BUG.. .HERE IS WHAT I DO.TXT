@@ -1,0 +1,26 @@
+hey now everything is good, FIRST REMEMBER THAT TULIKUWA TUNAPATA FIREBASE IS NOT INITIALIZED ERROR IN OUR CONSOLE BUT NOW AFTER WHEN I RUN MY CODE I SEE ANOTHER ERROR OF 
+"java.io.IOException: FIS_AUTH_ERROR in Android Firebase" BY SEEING THIS ERROR NIKAPATA MOYO KUWA OK NOW FIREBASE HAS BEEN INITIALIZED BUT THERE ARE SOMETHING ELSE MAKE ME 
+UNABLE TO ACCESS FIREBASE SERVICES, THEN I GO TO THIS ARTICLE IN STACK OVERFLOW 
+https://stackoverflow.com/questions/60698622/java-io-ioexception-fis-auth-error-in-android-firebase
+KWANZA KITU CHA KUSHANGAZA NA KUJUA KUWA FIREBASE IMEKUWA INITIALIZED NI KWAMBA NILIVYOENDA KWENYE MY GOOGLE CLOUD CONSOSE I IN THE LIST OF SERVICES AND API ENABLED I SEE THE
+FIREBASE HAS BEEN ACCESSED BY THERE IS "100" errors then i know ok now my project has initalized the firebase, ooh i said THANK YOU GOD, NOW I CONTINUE TO DEBUGG
+NOW I FIND THE ANSWER IS THAT THE API I'VE LINKED IN google-services.json has not been enabled to use the firebase services, I go to my account in the google console and look  
+at that ENABLED_API >> CREDETIALS >> CLICK API YOU'VE FOUND IN YOU google-services.json AND SOMETIMES BY DEFAULT ITS NAME HAS "ENABLED BY FIREBASE" THEN WHAT NEXT IS THAT I 
+LOOK IT AND CLICK EDIT THEN I GO TO RESTRICT API AND ADD THE FOLLOWING SERVICES TO BE ACCESSED BY THAT API...
+this is a list of services i enabled to make my api access the firebase services 
+    1. cloud messaging
+    2. fcm registration api
+    3. firebase app distribution api
+    4. firebase dynamic links api
+    5. firebase hosting api
+    6. firebase installation api
+    7. firebase management api
+    8. firebase remote config api
+    9. firebase remote config realtime api
+    10. firebase cloud messaging api
+
+by enabling this services now everything is good thank you god also make sure that 
+you don't pass the PROJECT_ID when you fetch push token use expo..
+WHAT I'VE LEARN IS THAT SOMETIMES IT TAKES TIME FOR FIREBASE TO BE CONFIGURED AND TO BE ENABLED AS THE 
+SERVICE IN YOUR GOOGLE CLOUD CONSOLE JUST CHILL OR YOU SHOULD GO AND ENABLE THE SERVICE
+JUST ENABLE FIREBASE SERVICE IN YOUR GOOGLE CLOUD CONSOSE IF ITS NOT ENABLED EVEN AFTER SIGNING USING THE FIREBASE 

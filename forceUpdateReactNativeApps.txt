@@ -1,0 +1,6 @@
+https://medium.com/@kinley.tshering/force-update-react-native-apps-a9c1f22c0701
+
+ LOG  IT NEEDS UPDATE  {"currentVersion": "1.0.0", "isNeeded": true, "latestVersion": "1.0.1", "storeUrl": "https://play.google.com/store/apps/details?id=com.mweuc654.Kiepe&hl=en&gl=US"}
+
+ What is taken to check for the new update is not a version: 1.0.0, so we should change this mainly so as it to check if the new version is required don't forget
+ android/build.gradle and app.json is your friend for you to edit that version

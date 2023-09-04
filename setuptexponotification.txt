@@ -1,0 +1,1 @@
+https://github.com/expo/expo/tree/main/packages/expo-notifications#installation-in-bare-react-native-projects

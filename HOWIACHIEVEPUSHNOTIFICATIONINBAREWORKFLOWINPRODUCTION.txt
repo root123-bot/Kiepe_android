@@ -1,0 +1,219 @@
+Thank you HABIBU GODO FOR HELPING ME SOLVING THIS BUG, I'VE SPENT MY ENTIRE DAY WITHOUT WINNING THIS ISSUE, BUT THESE ARE TIPS/STEPS I TOOK:
+1. Go through the issueswithfetchingexpopushtoken.txt file where i explained what problem i faced, 
+2. Then you should first go and read here how to link our project to expo notification in android kuna mambo ya firebase humu ..
+https://docs.expo.dev/push-notifications/push-notifications-setup/ isome hii link vizuri na ukisoma make sure kwenye firebase unapata vitu 
+vifuatavyo... nanukuu how it look
+>>> npx expo install expo-notifications expo-device expo-constants
+>>> Add notifification  handler, receiver and response if you want (i have  these already set)
+>>> 3
+Get Credentials for development builds
+
+For Android and iOS, there are different requirements to set up your credentials.
+
+Android
+
+For Android, you need to configure Firebase Cloud Messaging (FCM) to get your credentials and set up your Expo project. It is required for all Android apps using Expo SDK.
+
+
+FCM is not currently available for expo-notifications on iOS.
+Setting up FCM
+To create a Firebase project, go to the Firebase console and click on Add project.
+
+In the console, click the setting icon next to Project overview and open Project settings. Then, under Your apps, click the Android icon to open Add Firebase to your Android app and follow the steps. Make sure that the Android package name you enter is the same as the value of android.package from your app.json.
+
+After registering the app, download the google-services.json file and place it in your project's root directory.
+
+
+The google-services.json file contains unique and non-secret identifiers of your Firebase project. For more information, see Understand Firebase Projects.
+In app.json, add an android.googleServicesFile field with the relative path to the downloaded google-services.json file. If you placed it in the root directory, the path is:
+
+app.json
+
+Copy
+{
+  "android": {
+    "googleServicesFile": "./google-services.json"
+  }
+}
+For push notifications to work correctly, Firebase requires the API key to either be unrestricted (the key can call any API) or have access to both Firebase Cloud Messaging API and Firebase Installations API. The API key is found under the client.api_key.current_key field in google-services.json file:
+
+google-services.json
+
+Copy
+{
+   "client": [
+     {
+       "api_key": [
+         {
+           "current_key" "<your Google Cloud Platform API key>",
+         }
+       ]
+     }
+   ]
+ }
+Firebase also creates an API key in the Google Cloud Platform Credentials console with a name like Android key (auto-created by Firebase). This could be a different key than the one found in google-services.json.
+
+To be sure that both the current_key and the Android key in the Credentials console are the same, go to the Google Cloud API Credentials console and click on Show key to verify their value. It will be marked as unrestricted.
+
+
+Firebase projects with multiple Android apps might contain duplicated data under the client array in the google-services.json. This can cause issues when the app is fetching the push notification token. Make sure to only have one client object with the correct keys and metadata in google-services.json.
+Now you can re-build the development build using the eas build command. At this point, if you need to create a development build, see create a development build for a device.
+
+Upload server credentials
+For Expo to send push notifications from our servers and use your credentials, you'll have to upload your secret server key to your project's Expo dashboard.
+
+>>> In the Firebase console, next to Project overview, click gear icon to open Project settings.
+
+Click on the Cloud Messaging tab in the Settings pane.
+
+Copy the token listed next to the Server key.
+
+
+Server Key is only available in Cloud Messaging API (Legacy), which is disabled by default. 
+Enable it by clicking the three-dot menu > Manage API in Google Cloud Console and following the steps in the console. Once the legacy messaging API is enabled, you should see Server Key in that section.
+Getting the server key from Firebase console's Cloud messaging tab.
+In your Expo account's dashboard, select your project, and click on Credentials in the navigation menu. Then, click on your Application Identifier that follows the pattern: com.company.app.
+
+Under Service Credentials > FCM Server Key, click Add a FCM Server Key > Google Cloud Messaging Token and add the Server key from step 3.
+
+
+Expo Notifications only supports the Cloud Messaging API (Legacy) key at this time. This key is deprecated by Firebase. However, it will continue to work until June 30, 2024. We will provide information on migrating to the new v1 key in the future.
+
+
+AFTER THAT WE HAVE THE SECOND PHASE THIS IS WHEN HABIBU COME FROM HE ASSIST ME BY TELLING ME WE SHOULD HAVE firebaseConfig.js FOR INITIALIZING FIREBASE SERVICES IN OUR PROJECT AND THIS IS ACCORDING TO THIS link
+https://docs.expo.dev/guides/using-firebase/
+I will summarize here what to do:
+Use Firebase
+A guide on getting started and using Firebase JS SDK and React Native Firebase library.
+Firebase is a Backend-as-a-Service (BaaS) app development platform that provides hosted backend services such as realtime database, cloud storage, authentication, crash reporting, analytics, and so on. It is built on Google's infrastructure and scales automatically.
+
+There are two different ways you can use Firebase in your projects:
+
+Using Firebase JS SDK
+Using React Native Firebase
+React Native supports both the JS SDK and the native SDK. The following sections will guide you through when to use which SDK and all the configuration steps required to use Firebase in your Expo projects.
+
+Prerequisites
+
+Before proceeding, make sure that you have created a new Firebase project or have an existing one using the Firebase console.
+
+Using Firebase JS SDK
+
+The Firebase JS SDK is a JavaScript library that allows you to interact with Firebase services in your project. It supports services such as Authentication, Firestore, Realtime Database, and Storage in a React Native app.
+
+When to use Firebase JS SDK
+
+You can consider using the Firebase JS SDK when you:
+
+Want to use Firebase services such as Authentication, Firestore, Realtime Database, and Storage in your app and want to develop your app with Expo Go.
+Want a quick start with Firebase services.
+Want to create a universal app for Android, iOS, and the web.
+Caveats
+Firebase JS SDK does not support all services for mobile apps. Some of these services are Analytics, Dynamic Links and Crashlytics. See the React Native Firebase section if you want to use these services.
+
+Install and initialize Firebase JS SDK
+
+The following sub-sections use firebase@9.x.x. Expo SDK do not enforce or recommend any specific version of Firebase to use in your app.
+
+If you are using an older version of the firebase library in your project, you may have to adapt the code examples to match the version that you are using with the help of the Firebase JS SDK documentation.
+
+1
+Install the SDK
+After you have created your Expo project, you can install the Firebase JS SDK using the following command:
+
+Terminal
+
+Copy
+- npx expo install firebase
+2
+Initialize the SDK in your project
+To initialize the Firebase instance in your Expo project, you must create a config object and pass it to the initializeApp() method imported from the firebase/app module.
+
+The config object requires an API key and other unique identifiers. To obtain these values, you will have to register a web app in your Firebase project. You can find these instructions in the Firebase documentation.
+
+After you have the API key and other identifiers, you can paste the following code snippet by creating a new firebaseConfig.js file in your project's root directory or any other directory where you keep the configuration files.
+
+firebaseConfig.js
+
+Copy
+import { initializeApp } from 'firebase/app';
+
+// Optionally import the services that you want to use
+// import {...} from "firebase/auth";
+// import {...} from "firebase/database";
+// import {...} from "firebase/firestore";
+// import {...} from "firebase/functions";
+// import {...} from "firebase/storage";
+
+// Initialize Firebase
+const firebaseConfig = {
+  apiKey: 'api-key',
+  authDomain: 'project-id.firebaseapp.com',
+  databaseURL: 'https://project-id.firebaseio.com',
+  projectId: 'project-id',
+  storageBucket: 'project-id.appspot.com',
+  messagingSenderId: 'sender-id',
+  appId: 'app-id',
+  measurementId: 'G-measurement-id',
+};
+
+const app = initializeApp(firebaseConfig);
+// For more information on how to access Firebase in your project,
+// see the Firebase documentation: https://firebase.google.com/docs/web/setup#access-firebase
+You do not have to install other plugins or configurations to use Firebase JS SDK.
+
+Firebase version 9 provides a modular API. You can directly import any service you want to use from the firebase package. For example, if you want to use an authentication service in your project, you can import the auth module from the firebase/auth package.
+
+
+Using Firebase Authentication with version 9 or below? See the guide for setting up persistence to keep users logged in between reloads.
+3
+Configure Metro
+
+If you are using Firebase version 9.7.x and above, you need to add the following configuration to a metro.config.js file to make sure that the Firebase JS SDK is bundled correctly.
+Expo CLI uses Metro to bundle your JavaScript code and assets, and add support for more file extensions.
+
+Start by generating the template file metro.config.js in your project's root directory using the following command:
+
+Terminal
+
+Copy
+- npx expo customize metro.config.js
+Then, update the file with the following configuration:
+
+metro.config.js
+
+Copy
+const { getDefaultConfig } = require('@expo/metro-config');
+
+const defaultConfig = getDefaultConfig(__dirname);
+defaultConfig.resolver.sourceExts.push('cjs');
+
+module.exports = defaultConfig;
+
+
+BY DOING SO WE SHOULD HAVE THE PERFECT CONFIGURATION TO ALLOW EXPO TO WORK WITH FIREBASE TO DELIVER NOTIFICATION TO ANDROID AND THIS
+IS THE ONE HELPING USE GETTING THE EXPO TOKEN ... .BUT DON'T FORGET THIS TRICKS JUST LOOK AT MY firebaseConf.js
+
+        import { initializeApp } from 'firebase/app';
+
+        // Initialize Firebase
+        const firebaseConfig = {
+        //   apiKey: 'api-key',
+        //   authDomain: 'project-id.firebaseapp.com',
+        //   databaseURL: 'https://project-id.firebaseio.com',
+        projectId: 'kihepe-b802c',
+        storageBucket: 'kihepe-b802c.appspot.com',
+        messagingSenderId: '197773276182',
+        appId: '1:197773276182:android:ccdcf242800d813194b137',
+        //   measurementId: 'G-measurement-id',
+        };
+
+        const app = initializeApp(firebaseConfig);
+        // For more information on how to access Firebase in your project,
+        // see
+
+THIS IS HOW IT LOOK ALIKE REMEMBER WE GET THE "messagingSenderId" in our firebase 
+select project for us is "Kiepe" then go to the "CLOUD MESSAGING" tab here you will 
+see the "SenderId"
+also another trick i see Habibu do is in "storageBucket" first it looks like "project-id.appspot.com" this
+mean we have to replace the project_id with our id, the project id is found in the "General" tab

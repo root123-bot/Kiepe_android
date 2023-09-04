@@ -1,0 +1,27 @@
+the reason behind is that the playstore sign the aab everytime you uploaded ur aab in playstore so it generate the new sha1 credentials and as you remember our app here we use the sha1 of "release" in our pc this means the
+the "sha1" will be the same since its our pc which sign the "apk" so that's the reason why map is not display you should get the sha1 from the playstore and add to ur android map sdk for it to display the map... Lets test
+this issue.. the credentials(SHA1) change because its "Google" which sign your app or aab
+thankyou to chatgpt for this beautiful answer
+
+Yes, the SHA-1 fingerprint generated for the release build using "./gradlew assembleRelease" is different from the one generated using "./gradlew bundleRelease". The difference lies in the type of artifacts each command creates:
+
+Using Play Console (Recommended): The easiest and recommended way to get the SHA-1 fingerprint for your AAB is through the Google Play Console. Once you upload your AAB to the Play Console, Google Play will generate and display the SHA-1 fingerprint for the app signing certificate. Here's how to find it:
+Go to the Google Play Console (https://play.google.com/apps/publish).
+Select your app from the list.
+Navigate to "Release" > "App Signing."
+Under "App signing certificate," you will find the SHA-1 certificate fingerprint.
+It is generally more convenient to obtain the SHA-1 fingerprint from the Play Console since it handles the signing and optimizations when you upload the AAB.
+
+To set up restrictions for the Android Map SDK API, you should use the "deployment" certificate (also known as the "App signing certificate" or "App signing SHA-1 certificate") that you obtain from the Google Play Console.
+
+The "deployment" certificate is the SHA-1 certificate fingerprint of the certificate used by Google Play to sign the APKs that are distributed to users when they download your app from the Play Store. This is the certificate you need to use for API key restrictions because it ensures that your API key is securely linked to your app and will work with all APKs signed by Google Play, including updates and future releases.
+
+
+
+Yes, you are right. In some cases, it may take a few hours for the changes to the API key restrictions to propagate fully. While it usually happens quickly, occasional delays can occur due to various factors, including caching, network latency, and system updates.
+
+It's a good idea to be patient and give it some time to ensure that the changes have had enough opportunity to take effect. During this time, you can continue testing on different devices or in different network environments to confirm if the map starts to display correctly.
+
+If after waiting for a reasonable period (at least a few hours) you still encounter issues with the map not displaying, you can further investigate and troubleshoot potential problems based on the suggestions I provided earlier.
+
+Remember that the "deployment" certificate SHA-1 fingerprint is the correct one to use for API key restrictions when you are distributing your app through the Google Play Store. So, as long as you've correctly added the "deployment" certificate SHA-1 fingerprint to the allowed fingerprints in the API key settings, the map should start displaying once the changes have propagated.

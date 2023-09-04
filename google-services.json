@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "197773276182",
+    "project_id": "kihepe-b802c",
+    "storage_bucket": "kihepe-b802c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:197773276182:android:ccdcf242800d813194b137",
+        "android_client_info": {
+          "package_name": "com.mweuc654.Kiepe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "197773276182-1pgke1jmqt8ve3omcskcf9b8ukvnad1n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mweuc654.Kiepe",
+            "certificate_hash": "fd1d1e584634d5176faf79d811aa636e00f10408"
+          }
+        },
+        {
+          "client_id": "197773276182-tmv95bjg81jsd50dp94mb9ldh0h0u92j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMuoY3N-nsaLtag-cloDg6_URiyXG0b6c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "197773276182-tmv95bjg81jsd50dp94mb9ldh0h0u92j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

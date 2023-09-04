@@ -1,0 +1,53 @@
+hii error imenitesa sana nimeenda kwenye chatgpt wakanipa uongo wakanidanganya nimehangaika kutoka asubuhi app yake ilikuwa bado ku-build apk coz ku-run in android imekubali...
+hii error hatimaye nimeiweza kupitia issues of "github" error inasema 
+
+/Users/macbookair/Downloads/Kiepe android - Last Android Project Before Ejecting/android/app/src/main/java/com/mweuc654/Kiepe/MainApplication.java:68: error: cannot find symbol
+    ReactNativeFlipper.initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
+    ^
+  symbol:   variable ReactNativeFlipper
+  location: class MainApplication
+1 error
+
+
+Hapa tunachotakiwa kufanya ni kumake-sure package name in ReactNativeFlipper.java na kwenye MainApplication.java ni the "same"  why ndo issue ambayo ilibid tufanye mim mwanzo siku-NOTICE
+in my MainApplication.java i have package name of  "com.mweuc654.Kiepe" while in ReactNativeFlipper.java i have package name of "com.mweuc654.Kihepe"
+na hapa ndo kulikuwa na utata ko kupitia github nimeweza ku-fix hii issue
+https://github.com/facebook/react-native/issues/36091
+
+Answer: Ko vilevile kabla hujaanza chochote make sure project yake in the same package name throghout make sure kitu hichi unakufahamu.. Vilevile kuna ishu moja "chatgpt" amenisaidia if you
+getting the error of 
+
+> Task :app:createBundleReleaseJsAndAssets FAILED
+Error: Cannot find module '@expo/metro-config'
+
+ANSWER FROM CHATGPT MAKE SURE THE EXPO CLI YOU DOWNLOADED IS SUPPORTING THE EXPO VERSION YOU HAVE FOR EXAMPLE MY OWN EXPO IS OF VERSION '48.0.18' and its supported by expo cli of 4.X.X
+THIS IS HOW I KNOW...
+The error message "Cannot find module '@expo/metro-config'" indicates that there is an issue with the Expo Metro configuration module, which is required for building the JavaScript bundle and assets in an Expo project.
+
+This error commonly occurs when there is a mismatch between the version of Expo CLI and the version of your Expo project. It's essential to ensure that both are using compatible versions to avoid such problems.
+
+To resolve this issue, you can try the following steps:
+
+Install Dependencies: Make sure all the dependencies required by your project are installed. In your project's root directory, run the following command:
+Copy code
+npm install
+This will install all the dependencies listed in your package.json file.
+Update Expo CLI: Ensure that you are using the latest version of the Expo CLI. You can update it by running:
+Copy code
+npm install -g expo-cli
+This will update the Expo CLI to the latest version.
+Clear Cache: Sometimes, caching issues can cause problems. Try clearing the Metro bundler cache by running the following command:
+r
+Copy code
+expo r -c
+or
+r
+Copy code
+expo start -c
+This will reset the cache.
+Check Versions: Verify that the versions of Expo CLI and Expo in your project's package.json are compat
+.... 
+
+
+
+// FOR MORE FOLLOW THIS LINK https://chat.openai.com/share/a28baf19-001e-41cd-8612-8184e5f54b01

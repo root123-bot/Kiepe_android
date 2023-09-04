@@ -1,0 +1,4 @@
+initially i've fully configured by react-native-map with google map and it reallly worked and for all eas build i performed in my project looks working with map THE PROBLEM I SEE IS WHEN I BUILD IN MY BARE WORKFLOW I SEE NO MAP I SEE THE 
+INIFITY SPINNER, Why? because my map now have the different SHA1 and bundle_id different from the one build by expo, expo for every update use the same bundle and credential to build app so when i shifter to bare workflow i face that error because
+now i manually do my build in bare workflow in my computer i need to get the credentials myself and add it to my google map android API, that's how that worked my guy i have to notice this later after many try then i notice that ok my build now have
+no crediential or different credential from that signed in expo... and you should remember you've free plan in google console which afte 3 months expires and we should start paying thats all

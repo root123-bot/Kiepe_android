@@ -1,0 +1,36 @@
+npm run android error .. unable to locate JAVA_HOME what should i do i should specify the JAVA_HOME
+location and by default we should use the one provided by Android Studio
+on my mac the JAVA_HOME is located on /Applications/Android\ Studio.app/Contents/jbr/Contents/Home 
+so to fix this in ur project run 
+JAVA_HOME=/Applications/Android/\ Studio.app/Contents/jbr/Contents/Home
+
+also we have android home of 
+ANDROID_HOME="/Users/macbookair/Library/Android/sdk"
+
+solved image picker error caused by image-cropper
+https://stackoverflow.com/questions/72841947/could-not-find-com-theartofdev-edmodoandroid-image-cropper2-8-0
+
+just include 
+  dependencies {
+       implementation 'com.github.CanHub:Android-Image-Cropper:4.5.0'
+  }
+and add this "jcenter()" to your dependencies
+https://github.com/CanHub/Android-Image-Cropper
+
+
+https://www.youtube.com/watch?app=desktop&v=TSfE-4CVgDU
+
+i hardcoded values of BuildConfig.IS_HERMES_ENABLED to "true" and for BuildConfig.IS_NEW_ARCHITECTURE_ENABLED to "false" after failed to solve them 
+
+also i found in some case i have different package.. for expmle in ReactNativeFlipper.java it import package "com.kihepe"
+also in android/build.gradle i see namespace is "com.kihepe" they said in some case if things not working make sure you have 
+the same package name for me is "com.mweuc654.Kiepe"... error of failed to import R solved by this counter measure
+if found this is this thread.. https://github.com/expo/expo/issues/21784
+
+
+        What worked for me was to make sure that the namespace in android/app/build.gradle was correct and then run ./gradlew clean and then run the android app again.
+
+        For some reason the namespace generated with expo prebuild was wrong.
+
+        I.e. My MainApplication.java file was located in com/company/app folder so the namespace should be com.company.app.
+

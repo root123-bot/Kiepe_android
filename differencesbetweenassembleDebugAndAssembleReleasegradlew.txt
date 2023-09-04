@@ -1,0 +1,13 @@
+The difference between running ./gradlew assembleDebug and ./gradlew assembleRelease lies in the build type and configuration used during the Android app's compilation and packaging process.
+
+assembleDebug:
+When you run ./gradlew assembleDebug, it builds the Android app in the "debug" build type.
+The "debug" build type is intended for development purposes and is not optimized for release or production distribution.
+In the "debug" build type, the app is signed with a debug keystore, and additional debugging information and symbols are included in the APK, which can be helpful for debugging and testing during development.
+The APK generated with assembleDebug is larger in size compared to the APK built with assembleRelease.
+assembleRelease:
+When you run ./gradlew assembleRelease, it builds the Android app in the "release" build type.
+The "release" build type is meant for production distribution and is optimized for performance, size, and security.
+In the "release" build type, the app needs to be signed with a release keystore. The release keystore contains the private key used to sign the app, and it should be kept secure and not shared with others.
+The APK generated with assembleRelease is smaller in size because it does not include additional debugging information and symbols that are present in the "debug" build.
+In summary, ./gradlew assembleDebug is used during development for quick and convenient debugging, while ./gradlew assembleRelease is used when preparing the app for production distribution, ensuring it is properly signed and optimized for release. When you are ready to distribute your app to users, you should always use the assembleRelease command to create the final production-ready APK.

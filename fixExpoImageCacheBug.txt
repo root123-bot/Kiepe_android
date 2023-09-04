@@ -1,0 +1,14 @@
+Just look at your Card.js we used the react-native-image-cache to lazy/blur image until its fully loaded
+but I hussle until i succed to make it work.. what you should do if you have the error is first
+``` >>> install react-native-image-expo-image-chache using 
+    >>> npm i react-native-expo-image-cache
+    >>> Also since we're using "expo" you should not install the "expo-blur" using npm instead use "npx expo install.."
+    >>> npx expo install expo-blur
+
+Also u should notice something here in their documentation in "preview" they set uri to "base64" image format
+base64 image format is actual string which contains the actual image, but u can use the uri of the image in 
+server which is "http"/"https" but here in case you use server image "http"/"https" you will notice blur at start
+it have color of "white" if u set it or of "black" if u set it, but if u use "base64" image format u will not notice
+any blur at start, so i think its better to use "base64" image format, but if u want to use "http"/"https" image format
+so the advantage of using "base64" we'll see "blur of image" at start instead of "white" or "black" color then "blur" then
+"actual image" when using "http"/"https" image format, but if u use "base64" image format u will see "blur" then "actual image"
